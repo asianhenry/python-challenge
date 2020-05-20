@@ -1,8 +1,6 @@
 
 import os
 import csv
-#need this to count votes
-from collections import Counter
 
 # Read in the CSV file
 csvpath = os.path.join('../../''election_data.csv')
@@ -22,17 +20,45 @@ with open(csvpath) as csvfile:
         totalvotes += 1
         candidate.append(row[2])
 
+#------------------------------------------------------------
 
 #O.O this creates a dictionary with the candidate names (keys) and the number of votes
-votes = Counter(candidate)
+#from collections import Counter
+#votes = Counter(candidate)
 
 #we can convert the seperate dictionary elements into lists (keys and values)
-candidatelist = list(votes.keys())
-votecount = list(votes.values()) 
+#candidatelist = list(votes.keys())
+#votecount = list(votes.values()) 
+
+#ok so this is what I originally did. We aren't allowed to use imported libraries for this assignment, but I'll just leave this here
+
+#------------------------------------------------------------
+
+candidatelist = []
+
+#use this loop to create a list with only unique candidate names
+for x in range(len(candidate)):  
+    if candidate[x] not in candidatelist: 
+        candidatelist.append(candidate[x])
+
+#use comprehensions! I originally used a for loop but should get into the practice of list comprehensions
+#then set the initial values to zero
+votecount = [0 for x in candidatelist]
+
+#for y in range(len(candidatelist)):
+#        votecount.append(int(0))    
+        
+#ok this took some thinking
+#we use nested for loop to add a vote counter every time the candidate name appears in the original "candidate" list
+for x in range(len(candidate)):
+    for y in range(len(candidatelist)):
+        if candidate[x] == candidatelist[y]:
+            votecount[y] += 1
+
 
 #we create a list with the calculated percentage of votes
 #also you this format to present percentage values with 3 decimal places
-votepercentages = ["{:.3f}".format(count/totalvotes*100) for count in votecount]
+votepercentages = ["{:.3f}".format(i/totalvotes*100) for i in votecount]
 
 #just printing text
 print("Election Results")
