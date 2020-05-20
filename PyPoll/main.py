@@ -76,7 +76,6 @@ for i in range(len(candidatelist)):
 print("-------------------------")
 
 
-
   #Election Results
   #-------------------------
   #Total Votes: 3521001
