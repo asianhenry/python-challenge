@@ -56,7 +56,7 @@ for x in range(len(candidate)):
             votecount[y] += 1
 
 
-#we create a list with the calculated percentage of votes
+#we create a list with the calculated percentage of votes (comprehensions!)
 #also you this format to present percentage values with 3 decimal places
 votepercentages = ["{:.3f}".format(i/totalvotes*100) for i in votecount]
 
