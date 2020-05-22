@@ -88,7 +88,9 @@ print(f"Greatest Decrease in Profits: {lossmonth} (${maxdecrease})")
 
 
 #write the code output into a text file
-with open("financial_analysis.txt", "w+") as f:
+output_file = os.path.join("../txt_outputs", "financial_analysis.txt")
+
+with open(output_file, "w+") as f:
     print("Financial Analysis",file=f)
     print("-------------------------",file=f)
     print(f"Total Months: {monthcount}",file=f)

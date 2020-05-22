@@ -91,7 +91,13 @@ print("-------------------------")
 #this creates and writes a txt file with the code output
 # x creates, a appends, w overwrites, r is read only
 # w+ will overwrite or create a file if not there
-with open("election_results.txt", "w+") as f:
+
+output_file = os.path.join("../txt_outputs", "election_results.txt")
+
+#this creates and writes a txt file with the code output
+# x creates, a appends, w overwrites, r is read only
+# w+ will overwrite or create a file if not there
+with open(output_file, "w+") as f:
 
     print("Election Results",file=f)
     print("-------------------------",file=f)
